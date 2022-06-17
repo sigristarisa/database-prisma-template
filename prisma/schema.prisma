@@ -10,3 +10,15 @@ datasource db {
   url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
+
+model Students {
+  id   Int    @id @default(autoincrement())
+  name String
+  tags Tags[]
+}
+
+model Tags {
+  id       Int    @id @default(autoincrement())
+  content  String @unique
+  students Students[]
+}
